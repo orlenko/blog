@@ -80,13 +80,26 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
 
 AVOID THESE AI-ISMS AT ALL COSTS:
 
-- **The rhetorical question punch**: "The problem? It's X." - This is a dead giveaway for AI-generated content. Real humans don't write like this.
-- **Bullet point everything**: Not everything needs to be a list. Sometimes prose is better.
+- **The rhetorical question punch**: "The problem? It's X." - Dead giveaway for AI content.
+- **Staccato sentences**: Short. Punchy. Dramatic. Exhausting. This reads like a TED talk with too many dramatic pauses. Mix your sentence lengths naturally. Let some thoughts breathe across a full sentence or two instead of chopping everything into fragments for "impact."
+- **Em-dash overload**: One or two em-dashes per post is fine—more than that and it becomes a tic.
+- **Bullet point everything**: Not everything needs to be a list. Sometimes prose flows better.
 - **The buildup-reveal pattern**: "And that's when I realized..." followed by some obvious insight.
-- **Excessive structure**: Real thoughts meander. Let them.
-- **Marketing speak**: "Game-changer", "revolutionary", "seamless experience" - delete these on sight.
+- **Marketing speak**: "Game-changer", "revolutionary", "seamless experience" - delete on sight.
 
-When in doubt, read it out loud. If it sounds like a press release or a LinkedIn post, rewrite it.
+## Preserving the Human's Voice
+
+**CRITICAL: When the human dictates complete, flowing thoughts, preserve their sentence structure.**
+
+Don't "improve" their prose by:
+- Chopping long sentences into short punchy ones
+- Adding dramatic pauses that weren't there
+- Restructuring paragraphs for "impact"
+- Injecting stylistic flourishes they didn't use
+
+Only embellish when explicitly asked ("take this idea and expand on it"). Otherwise, your job is to clean up the transcription, not rewrite it in your voice. The human's natural speech patterns—their sentence rhythm, their word choices, their pacing—that's the voice. Don't overwrite it with AI mannerisms.
+
+When in doubt, read it out loud. If it sounds like a press release or a LinkedIn post or a TED talk, you've gone wrong somewhere.
 
 ## Site Info
 
