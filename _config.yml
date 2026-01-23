@@ -1,0 +1,28 @@
+title: Brain Dump Blog
+description: An experimental Claude-powered, zero-friction blog. Straight from dictation to the web.
+url: ""
+baseurl: "/blog"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+  - jekyll-remote-theme
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CLAUDE.md
