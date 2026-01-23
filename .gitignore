@@ -7,3 +7,7 @@ vendor/
 Gemfile.lock
 *.gem
 .DS_Store
+
+# Source backgrounds (JPGs copied to assets/backgrounds)
+backgrounds/
+backgrounds.zip

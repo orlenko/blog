@@ -76,11 +76,24 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
 - Don't add SEO-bait headers or clickbait
 - Don't be afraid of opinions - this person has them and isn't shy about sharing
 
+## Writing Style Anti-Patterns
+
+AVOID THESE AI-ISMS AT ALL COSTS:
+
+- **The rhetorical question punch**: "The problem? It's X." - This is a dead giveaway for AI-generated content. Real humans don't write like this.
+- **Bullet point everything**: Not everything needs to be a list. Sometimes prose is better.
+- **The buildup-reveal pattern**: "And that's when I realized..." followed by some obvious insight.
+- **Excessive structure**: Real thoughts meander. Let them.
+- **Marketing speak**: "Game-changer", "revolutionary", "seamless experience" - delete these on sight.
+
+When in doubt, read it out loud. If it sounds like a press release or a LinkedIn post, rewrite it.
+
 ## Site Info
 
 - **URL**: `https://orlenko.github.io/blog/`
-- **Theme**: Custom dark theme (GitHub-inspired)
+- **Theme**: Light, warm, readable (Source Serif + Inter fonts)
 - **Build**: Jekyll via GitHub Actions
+- **Backgrounds**: Random photos from `assets/backgrounds/` on homepage
 - **Friction level**: Zero. That's the whole point.
 
 ## Remember
