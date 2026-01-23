@@ -1,7 +1,10 @@
 ---
 title: "I Forgot What I Did This Month (So I Built a Tool)"
 date: 2026-01-23 09:00:00 +0000
+image: /assets/images/robot.jpg
 ---
+
+![Claude Activity Logger]({{ site.baseurl }}/assets/images/robot.jpg)
 
 Last week my project manager asked what we accomplished this month and I just... sat there. Mouth open. Nothing coming out. I knew we'd done a lot—I could feel it in my bones, in the mass of merged PRs, in the general exhaustion—but specifics? Gone. Evaporated.
 
