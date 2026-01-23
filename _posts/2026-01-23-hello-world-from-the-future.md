@@ -1,7 +1,10 @@
 ---
 title: "Hello World from the Future of Blogging"
 date: 2026-01-23
+image: /assets/images/news.JPG
 ---
+
+![Breaking News: Everything Ends May 31st]({{ site.baseurl }}/assets/images/news.JPG)
 
 This blog exists because I was about to fall asleep and had a realization: I'm never going to set up WordPress. I'm never going to build a custom blog app. Life is too short, and I'd rather ship things than configure things.
 
