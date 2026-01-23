@@ -12,8 +12,6 @@ If you are using AI to generate 90% of your boilerplate or feature work, your hu
 
 But "asking Claude to review a PR" isn't enough. You can't just fire off a prompt and hope for the best. You need architecture. Over the last few months, I've settled on two distinct patterns for managing these sessions: the **Ralph Loop** (for deep context) and the **External Engine** (for event-driven tasks).
 
-Here is how I use them.
-
 ## Pattern A: The Ralph Loop (The Deep Context Loop)
 
 The first pattern is based on the "Ralph Loop," a concept articulated well in [this article on DevGenius](https://blog.devgenius.io/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809) (source code [here](https://github.com/frankbria/ralph-claude-code)). Yes, it's named after *that* Ralph.
@@ -48,7 +46,7 @@ This isn't a single script, but a framework. The "Engine" is a Bash loop that ha
 
 1. **The Monitor:** The script polls an external condition (e.g., GitHub API or CI logs) every 10–30 seconds.
 2. **The Trigger:** When a condition is met (e.g., a build fails), the script calls a hook to construct a prompt.
-3. **The Spawn:** It launches a fresh Claude session to fix the problem, commit, and push.
+3. **The Spawn:** It launches a fresh Claude session in YOLO mode (`--dangerously-skip-permissions`) to fix the problem, commit, and push. This is a calculated risk—without it, Claude asks permission for every file operation and your unattended loop stalls. The prompt becomes your only guardrail, so I include stern warnings like "Do not delete any files. Do not modify anything outside the src/ directory."
 4. **The Marker:** I instruct Claude to output a specific magic string (like `WORK_COMPLETE`) when it's done. The Bash script watches for this, kills the process, and goes back to monitoring.
 5. **The Exit:** When the external condition signals success (e.g., CI goes green), the loop exits entirely.
 
