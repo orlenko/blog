@@ -1,0 +1,18 @@
+flowchart TD
+    subgraph Engine[External Loop]
+        Start([Start]) --> Check{Check Condition}
+        Check -- No Trigger --> Sleep[Sleep]
+        Sleep --> Check
+        Check -- Work Trigger --> Launch[Launch Claude]
+        Launch --> Wait[Wait for Completion]
+        Wait --> Kill[Kill Process]
+        Kill --> Check
+        Check -- Exit Condition --> Exit([Exit Loop])
+    end
+
+    subgraph Claude[Claude Session]
+        Job[Do the Work] --> Marker[Output Marker]
+    end
+
+    Launch -.-> Job
+    Marker -.-> Wait

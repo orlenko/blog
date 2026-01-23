@@ -1,0 +1,17 @@
+flowchart TD
+    Start([Start Loop]) --> CheckState{State File Exists?}
+
+    CheckState -- No --> Init[Initialize Reviewer Agent]
+    Init --> DeepReview[Perform Deep Review: <br/>Standards, Corner Cases, Tests]
+    DeepReview --> UpdateState[Save Review to JSON]
+
+    CheckState -- Yes --> ReadState[Read Previous Review]
+    ReadState --> ReviewTheReview[Review the Review: <br/>Find False Positives & Omissions]
+
+    ReviewTheReview --> Compare{Discrepancies Found?}
+
+    Compare -- Yes --> UpdateState
+    UpdateState --> Start
+
+    Compare -- No (Consistent) --> Finalize[Generate Markdown Report]
+    Finalize --> Exit([Exit Loop])
