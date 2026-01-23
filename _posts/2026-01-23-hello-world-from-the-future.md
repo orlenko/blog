@@ -1,6 +1,6 @@
 ---
 title: "Hello World from the Future of Blogging"
-date: 2026-01-23
+date: 2026-01-23 01:00:00 -0800
 image: /assets/images/news.JPG
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "The Fireplace We Forgot"
-date: 2026-01-23
+date: 2026-01-23 16:00:00 -0800
 image: /assets/images/visualizer.jpg
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "I Forgot What I Did This Month (So I Built a Tool)"
-date: 2026-01-23
+date: 2026-01-23 02:00:00 -0800
 ---
 
 Last week my project manager asked what we accomplished this month and I just... sat there. Mouth open. Nothing coming out. I knew we'd done a lot—I could feel it in my bones, in the mass of merged PRs, in the general exhaustion—but specifics? Gone. Evaporated.

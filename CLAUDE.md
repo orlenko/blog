@@ -48,11 +48,13 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    ```markdown
    ---
    title: "Title Here"
-   date: YYYY-MM-DD
+   date: YYYY-MM-DD HH:MM:SS -0800
    ---
 
    Content here...
    ```
+
+   **Important**: Include the full timestamp (with time and timezone) so posts on the same day sort correctly. Most recent posts should appear first on the homepage.
 
 5. **Handle images** - If they paste screenshots:
    - Save to `assets/images/YYYY-MM-DD-descriptive-name.png`
