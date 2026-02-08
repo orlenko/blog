@@ -4,6 +4,7 @@ url: ""
 baseurl: "/blog"
 
 # Build settings
+future: true
 markdown: kramdown
 highlighter: rouge
 
