@@ -3,6 +3,8 @@ title: "I Built a Receipt Scanner Instead of Paying $99/Month"
 date: 2026-04-22 14:00:00 -0500
 ---
 
+![Illustration of a Rona receipt for $34.71]({{ site.baseurl }}/assets/images/receipt.jpg)
+
 Tax season rolled around and I had a few hundred receipts to deal with. The kind of stack that you know, intellectually, needs to end up as rows in a spreadsheet, but every cell of your body refuses to start typing.
 
 So I looked at what's out there. Most of the online tools want you to upload one receipt at a time, which, no. Not when I've got hundreds. The ones that do batch processing want $99/month. I don't need this thing for a month, I need it for an afternoon. And meanwhile the OpenAI API can process a single receipt image for less than half a cent. Half a cent, and someone's asking me for a hundred dollars.
