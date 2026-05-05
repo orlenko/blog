@@ -14,10 +14,29 @@ is_home: true
 
 <ul class="post-list">
   {% for post in site.posts %}
+  {% assign excerpt_text = post.excerpt | strip_html | strip %}
+  {% if excerpt_text == "" %}
+    {% assign excerpt_text = post.content | strip_html %}
+  {% endif %}
+  {% assign first_img = "" %}
+  {% assign img_parts = post.content | split: '<img' %}
+  {% if img_parts.size > 1 %}
+    {% assign src_after = img_parts[1] | split: 'src="' %}
+    {% if src_after.size > 1 %}
+      {% assign first_img = src_after[1] | split: '"' | first %}
+    {% endif %}
+  {% endif %}
   <li class="post-item">
-    <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
-    <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-    <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+    {% if first_img != "" %}
+    <a href="{{ site.baseurl }}{{ post.url }}" class="post-thumb" aria-hidden="true" tabindex="-1">
+      <img src="{{ first_img }}" alt="" loading="lazy">
+    </a>
+    {% endif %}
+    <div class="post-text">
+      <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+      <p class="excerpt">{{ excerpt_text | truncatewords: 40 }}</p>
+    </div>
   </li>
   {% endfor %}
 </ul>
