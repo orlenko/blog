@@ -26,11 +26,11 @@ And Claude did it. You're reading the result.
 4. Commits and pushes to main
 5. GitHub Actions builds and deploys to GitHub Pages
 
-That's it. Zero friction. Pure dictation-to-web pipeline.
+That's it. A dictation-to-web pipeline with as little machinery in the way as possible.
 
 ## Why This Matters
 
-Most developers I know have the same problem: we have thoughts worth sharing, tools worth bragging about, opinions worth debating. But the activation energy to actually blog is too high. By the time you've set up your static site generator, picked a theme, configured your build pipeline, and written your first "Hello World" post... you've lost the spark.
+Most developers I know have the same problem: thoughts worth sharing, tools worth bragging about, opinions worth debating, and a complete unwillingness to set up the infrastructure to publish any of it. By the time you've picked a static site generator, picked a theme, configured a build pipeline, and written your first "Hello World," the spark is gone.
 
 This approach inverts that. The blog infrastructure is invisible. I just talk.
 
@@ -41,13 +41,11 @@ This approach inverts that. The blog infrastructure is invisible. I just talk.
 - Random screenshots of things I'm building
 - Unfiltered brain dumps at midnight
 
-No editorial calendar. No SEO optimization. No drafts rotting in a folder somewhere. Just shipping.
+No editorial calendar, no SEO, no drafts rotting in a folder. Just shipping.
 
 ## The Meta Bit
 
 This very post was created by Claude interpreting a conversation where I rambled about wanting a zero-friction blog while fighting sleep. Claude extracted the interesting bits, formatted them, added some structure, and published.
-
-If that's not the future of content creation, I don't know what is.
 
 ---
 
