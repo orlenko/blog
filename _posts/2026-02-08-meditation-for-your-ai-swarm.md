@@ -3,6 +3,8 @@ title: "Mindfulness Meditation for Your AI Swarm"
 date: 2026-02-08 12:00:00 -0800
 ---
 
+![Silhouette watching a wall of scrolling colored log lines in a dim room]({{ site.baseurl }}/assets/images/logs.jpg)
+
 I run a lot of Claude instances. Claude Code sessions, sub-agents spawned by those sessions, automation loops that kick off Claude silently in the background. At any given time there might be half a dozen AI conversations happening on my machine, most of them invisible to me.
 
 That's the part that started to bother me. The tools that launch Claude silently — automated loops, orchestration scripts, CI helpers — consume Claude's output and send commands back without showing you anything. You just see a spinner, maybe a progress bar if you're lucky. What's actually being said in those conversations? No idea. It could be doing exactly what you asked, or hallucinating its way through your codebase, or writing poetry instead of fixing your tests, and you wouldn't know.
