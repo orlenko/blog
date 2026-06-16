@@ -26,7 +26,7 @@ It also explains when to *skip* the audio (sub-agents, scripted runs, anywhere a
 
 ## Muting
 
-The audio is great when I'm at home alone with the door closed. It's less great when my partner is on a call in the next room or when I'm pairing over video. So I wrote a tiny `voice` script that toggles the hook on and off.
+The audio is great when I'm at home alone with the door closed. It's much less great in the middle of a standup, when I'm trying to give my update and a cheerful Claude announces from the next room that my migration script is done. So I wrote a tiny `voice` script that toggles the hook on and off; a quick `voice mute` before any meeting has become reflex.
 
 ```bash
 voice mute     # silence the voice; still pops macOS notifications
