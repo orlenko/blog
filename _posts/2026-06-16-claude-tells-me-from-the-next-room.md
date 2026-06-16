@@ -24,6 +24,21 @@ It also explains when to *skip* the audio (sub-agents, scripted runs, anywhere a
 
 **3. (Optional) a nicer voice.** macOS's built-in voices are functional but not exactly pleasant for hours at a time. If you want something easier on the ears, [aitts](https://github.com/orlenko/aitts) is what I use — a small tool I wrote that's a friendlier `say`, cheap and easier on the ears. If you're happy with `Evan (Enhanced)` or `Daniel`, skip this step.
 
+## Muting
+
+The audio is great when I'm at home alone with the door closed. It's less great when my partner is on a call in the next room or when I'm pairing over video. So I wrote a tiny `voice` script that toggles the hook on and off.
+
+```bash
+voice mute     # silence the voice; still pops macOS notifications
+voice unmute   # restore audio
+voice toggle   # flip
+voice          # show current state
+```
+
+It works by touching a file at `~/.claude/voice.muted`. The stop hook checks for that file before calling `say`, and if it finds it, pops a macOS notification with the same one-line summary instead. The chyron is still there; it just goes to the notification center instead of out the speakers.
+
+This is a small thing, but the difference between "I get audio when it makes sense and not when it doesn't" and "I get audio always or never" turned out to matter more than I expected.
+
 ## Why it's worth setting up
 
 The first time I had three sessions running in parallel and was wondering which would finish first, I expected the audio cues to mostly tell me when things were *done*. What I didn't expect was how much they tell me about *what was done*, in a single glance-free sentence.
