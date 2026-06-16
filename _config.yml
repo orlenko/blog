@@ -1,7 +1,15 @@
 title: Brain Dump Blog
 description: An experimental Claude-powered, zero-friction blog. Straight from dictation to the web.
-url: ""
+url: "https://orlenko.github.io"
 baseurl: "/blog"
+lang: en
+
+# Author + social — consumed by jekyll-seo-tag for OG/Twitter cards and JSON-LD.
+author:
+  name: Vlad Orlenko
+twitter:
+  # username: yourhandle   # uncomment to add twitter:creator / twitter:site
+  # (the summary_large_image card itself is emitted directly in _layouts/default.html)
 
 # Build settings
 future: true
@@ -12,6 +20,9 @@ highlighter: rouge
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
   - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
 
 # Defaults
 defaults:
@@ -29,3 +40,4 @@ exclude:
   - CLAUDE.md
   - vendor
   - node_modules
+  - scripts

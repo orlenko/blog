@@ -95,12 +95,15 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    ---
    title: "Title Here"
    date: YYYY-MM-DD HH:MM:SS -0800
+   description: "One-sentence hook (optional but recommended)."
    ---
 
    Content here...
    ```
 
    **Important**: Include the full timestamp (with time and timezone) so posts on the same day sort correctly. Most recent posts should appear first on the homepage.
+
+   **`description:`** is optional. If present, it becomes the post's meta description and the text shown when the link is shared on social / search. If absent, the post's first paragraph is used automatically. Write it like a sharp one-liner, not SEO bait.
 
 5. **Handle images** - If they paste screenshots:
    - Save to `assets/images/YYYY-MM-DD-descriptive-name.png`
@@ -114,6 +117,16 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    ```
 
 7. **Confirm** - Tell them it's live (GitHub Actions takes ~1 min to deploy)
+
+## Social / Search Metadata (automatic)
+
+Every post is automatically search-findable, LLM-findable, and shareable — no manual steps:
+
+- **Share cards**: `scripts/gen-og-cards.sh` runs in CI and generates a 1200×630 PNG per post (the title over one of the background photos). That's the image that appears when a link is pasted into X/Slack/iMessage/LinkedIn. Nothing to do per post — it just happens. (You can preview locally with `bash scripts/gen-og-cards.sh` if ImageMagick is installed; output lands in `assets/og/`, which is gitignored.)
+- **OG / Twitter tags + JSON-LD**: emitted by `jekyll-seo-tag` via `{% seo %}` in `_layouts/default.html`.
+- **Feed + sitemap**: `jekyll-feed` publishes `/feed.xml` (RSS, good for readers and LLM ingestion); `jekyll-sitemap` publishes `/sitemap.xml` for crawlers.
+
+After publishing, you can sanity-check a card with the X/Twitter card validator or opengraph.xyz against the post URL.
 
 ## What NOT to Do
 

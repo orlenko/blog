@@ -21,6 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install ImageMagick + font for share cards
+        run: sudo apt-get update && sudo apt-get install -y imagemagick fonts-inter
+
+      - name: Generate Open Graph share cards
+        run: bash scripts/gen-og-cards.sh
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

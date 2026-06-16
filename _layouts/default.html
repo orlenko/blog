@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
+
+  {% comment %} Title, description, canonical, OG/Twitter text, JSON-LD. {% endcomment %}
+  {% seo %}
+  {% feed_meta %}
+
+  {% comment %} Per-post share card (1200x630 PNG), generated in CI by scripts/gen-og-cards.sh. {% endcomment %}
+  {% if page.is_home %}
+    {% assign og_card = '/assets/og/home.png' %}
+  {% elsif page.slug %}
+    {% assign og_card = '/assets/og/' | append: page.slug | append: '.png' %}
+  {% else %}
+    {% assign og_card = '/assets/og/home.png' %}
+  {% endif %}
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ og_card }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ og_card }}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
