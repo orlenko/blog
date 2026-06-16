@@ -20,13 +20,13 @@ Three pieces.
 
 It also explains when to *skip* the audio (sub-agents, scripted runs, anywhere a human isn't sitting at the keyboard) and what to leave out of the spoken line (long paths, command output, code dumps — they stay in the text).
 
-**2. A stop hook.** Claude Code's stop hooks fire when a turn ends. Mine grabs the last assistant message from the transcript, finds the `🗣` line, strips the emoji, and pipes the sentence to macOS `say`. No tool call, no MCP, no permissions prompt. The hook does all the work; Claude just has to remember to write the line.
+**2. [A stop hook](https://gist.github.com/orlenko/70c8b2038c3de8e13b09bc8178aa099d).** Claude Code's stop hooks fire when a turn ends. Mine grabs the last assistant message from the transcript, finds the `🗣` line, strips the emoji, and pipes the sentence to macOS `say`. No tool call, no MCP, no permissions prompt. The hook does all the work; Claude just has to remember to write the line.
 
 **3. (Optional) a nicer voice.** macOS's built-in voices are functional but not exactly pleasant for hours at a time. If you want something easier on the ears, [aitts](https://github.com/orlenko/aitts) is what I use — a small tool I wrote that's a friendlier `say`, cheap and easier on the ears. If you're happy with `Evan (Enhanced)` or `Daniel`, skip this step.
 
 ## Muting
 
-The audio is great when I'm at home alone with the door closed. It's much less great in the middle of a standup, when I'm trying to give my update and a cheerful Claude announces from the next room that my migration script is done. So I wrote a tiny `voice` script that toggles the hook on and off; a quick `voice mute` before any meeting has become reflex.
+The audio is great when I'm at home alone with the door closed. It's much less great in the middle of a standup, when I'm trying to give my update and a cheerful Claude announces from the next room that my migration script is done. So I wrote a tiny [`voice` script](https://gist.github.com/orlenko/bc4e8b2eceb8a03dc1537e8a598289a2) that toggles the hook on and off; a quick `voice mute` before any meeting has become reflex.
 
 ```bash
 voice mute     # silence the voice; still pops macOS notifications
