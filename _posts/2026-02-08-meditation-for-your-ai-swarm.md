@@ -1,6 +1,9 @@
 ---
 title: "Mindfulness Meditation for Your AI Swarm"
 date: 2026-02-08 12:00:00 -0800
+description: "One terminal that lets you watch every Claude Code conversation happening on your machine."
+image: /assets/og/2026-02-08-meditation-for-your-ai-swarm.png
+thumbnail: /assets/images/logs.jpg
 ---
 
 ![Silhouette watching a wall of scrolling colored log lines in a dim room]({{ site.baseurl }}/assets/images/logs.jpg)

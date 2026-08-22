@@ -1,63 +1,119 @@
 ---
 layout: default
-title: Home
-is_home: true
+title: Open-source workshop
+description: "Small, inspectable software from Bjola: practical tools, active experiments, and notes from building them."
+image: /assets/og/home.png
+body_class: home
 ---
-<div class="hero" id="hero">
-  <div class="hero-content">
-    <h1>{{ site.title }}</h1>
-    <p>{{ site.description }}</p>
-  </div>
-</div>
-
-<h2 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 1.5rem;">Recent Posts</h2>
-
-<ul class="post-list">
-  {% for post in site.posts %}
-  {% assign excerpt_text = post.excerpt | strip_html | strip %}
-  {% if excerpt_text == "" %}
-    {% assign excerpt_text = post.content | strip_html %}
-  {% endif %}
-  {% assign first_img = "" %}
-  {% assign img_parts = post.content | split: '<img' %}
-  {% if img_parts.size > 1 %}
-    {% assign src_after = img_parts[1] | split: 'src="' %}
-    {% if src_after.size > 1 %}
-      {% assign first_img = src_after[1] | split: '"' | first %}
-    {% endif %}
-  {% endif %}
-  <li class="post-item">
-    {% if first_img != "" %}
-    <a href="{{ site.baseurl }}{{ post.url }}" class="post-thumb" aria-hidden="true" tabindex="-1">
-      <img src="{{ first_img }}" alt="" loading="lazy">
-    </a>
-    {% endif %}
-    <div class="post-text">
-      <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
-      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-      <p class="excerpt">{{ excerpt_text | truncatewords: 40 }}</p>
+<main id="main-content">
+  <section class="workbench-hero" aria-labelledby="hero-title">
+    <div class="workbench-hero__statement">
+      <p class="kicker">Bjola Software / Public workshop</p>
+      <h1 id="hero-title">Tools I needed,<br>then made public.</h1>
+      <p class="workbench-hero__intro">Small, inspectable software for agent work, stubborn paperwork, listening, and the chores that should have disappeared by now.</p>
+      <a class="text-link" href="#projects">Open the project ledger ↓</a>
     </div>
-  </li>
-  {% endfor %}
-</ul>
+    <div class="workbench-hero__plate" role="group" aria-label="Workshop principles">
+      <div class="plate-mark" aria-hidden="true">B / 01</div>
+      <p>Built from real annoyances.<br>Released with honest labels.<br>Maintained when still useful.</p>
+      <dl>
+        <div><dt>Base</dt><dd>Coquitlam, BC</dd></div>
+        <div><dt>Output</dt><dd>Source + notes</dd></div>
+        <div><dt>Reviewed</dt><dd>{{ site.data.projects.reviewed }}</dd></div>
+      </dl>
+    </div>
+  </section>
 
-{% if site.posts.size == 0 %}
-<p>No posts yet. But they're coming...</p>
-{% endif %}
+  <section class="ledger" id="projects" aria-labelledby="projects-title">
+    <header class="section-heading">
+      <p class="kicker">Project ledger / selected work</p>
+      <h2 id="projects-title">Working software first.</h2>
+      <p>Each label describes what you can do with the project today. No stars, trend lines, or archaeological guesses from the last commit date.</p>
+    </header>
 
-<script>
-(function() {
-  const backgrounds = [
-    {% for file in site.static_files %}
-      {% if file.path contains 'assets/backgrounds' and file.extname == '.jpg' or file.extname == '.JPG' %}
-        "{{ site.baseurl }}{{ file.path }}",
-      {% endif %}
-    {% endfor %}
-  ].filter(Boolean);
+    {% assign lead = site.data.projects.featured | first %}
+    <article class="lead-project" id="{{ lead.id }}">
+      <div class="lead-project__copy">
+        <div class="project-index"><span>{{ lead.sequence }}</span><span>{{ lead.language }}</span></div>
+        <span class="status status--light">{{ lead.status_label }}</span>
+        <h3>{{ lead.name }}</h3>
+        <p class="project-short">{{ lead.short }}</p>
+        <p>{{ lead.description }}</p>
+        <div class="project-actions">
+          <a class="button button--paper" href="{{ lead.repository }}">Repository ↗</a>
+          {% if lead.note %}<a class="button button--ghost-light" href="{{ lead.note | relative_url }}">Build note</a>{% endif %}
+        </div>
+      </div>
+      <div class="lead-project__diagram" role="group" aria-label="Undrudge workflow">
+        <p class="kicker">Local pipeline / no daemon</p>
+        <ol>
+          <li><span>01</span>Gather agent + shell history</li>
+          <li><span>02</span>Sanitize before storage</li>
+          <li><span>03</span>Analyze repeated work</li>
+          <li><span>04</span>Write Markdown recommendations</li>
+        </ol>
+        <code>{{ lead.install }}</code>
+      </div>
+    </article>
 
-  if (backgrounds.length > 0) {
-    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-    document.getElementById('hero').style.backgroundImage = 'url(' + randomBg + ')';
-  }
-})();
-</script>
+    <div class="project-rows">
+      {% for project in site.data.projects.featured offset:1 %}
+        <article class="project-row" id="{{ project.id }}">
+          <div class="project-index"><span>{{ project.sequence }}</span><span>{{ project.language }}</span></div>
+          <div class="project-row__body">
+            <span class="status">{{ project.status_label }}</span>
+            <h3>{{ project.name }}</h3>
+            <p class="project-short">{{ project.short }}</p>
+            <p>{{ project.description }}</p>
+          </div>
+          <div class="project-row__actions">
+            {% if project.demo %}<a href="{{ project.demo }}">Open tool ↗</a>{% endif %}
+            <a href="{{ project.repository }}">Source ↗</a>
+            {% if project.note %}<a href="{{ project.note | relative_url }}">Read note</a>{% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="lab" aria-labelledby="lab-title">
+    <header class="section-heading section-heading--compact">
+      <p class="kicker">Lab shelf / handle with curiosity</p>
+      <h2 id="lab-title">Experiments worth opening.</h2>
+    </header>
+    <div class="lab-list">
+      {% for project in site.data.projects.lab %}
+        <a class="lab-row" href="{{ project.repository }}">
+          <span class="lab-row__number">L{{ forloop.index | prepend: '0' }}</span>
+          <span class="lab-row__name">{{ project.name }}</span>
+          <span class="lab-row__description">{{ project.description }}</span>
+          <span class="lab-row__meta">{{ project.status_label }} / {{ project.language }} ↗</span>
+        </a>
+      {% endfor %}
+    </div>
+    <p class="catalogue-note">Catalogue labels reviewed {{ site.data.projects.reviewed }}. <a href="https://github.com/orlenko?tab=repositories">Browse every public repository ↗</a></p>
+  </section>
+
+  <section class="notes-preview" aria-labelledby="notes-title">
+    <header class="section-heading">
+      <p class="kicker">Notes / dictated near the workbench</p>
+      <h2 id="notes-title">What happened while building.</h2>
+      <p>The blog remains deliberately quick and dirty: talk through what happened, turn it into one Markdown file, push.</p>
+    </header>
+    <div class="note-list">
+      {% for post in site.posts limit:3 %}
+        {% include note-row.html post=post number=forloop.index %}
+      {% endfor %}
+    </div>
+    <a class="button button--primary" href="{{ '/notes/' | relative_url }}">Read all notes →</a>
+  </section>
+
+  <section class="status-key" aria-labelledby="status-key-title">
+    <p class="kicker" id="status-key-title">Status vocabulary</p>
+    <dl>
+      {% for status in site.data.projects.statuses %}
+        <div><dt>{{ status[0] | replace: '_', ' ' }}</dt><dd>{{ status[1] }}</dd></div>
+      {% endfor %}
+    </dl>
+  </section>
+</main>

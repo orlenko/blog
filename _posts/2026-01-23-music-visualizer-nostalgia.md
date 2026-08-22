@@ -1,7 +1,9 @@
 ---
 title: "The Fireplace We Forgot"
 date: 2026-01-23 15:00:00 +0000
-image: /assets/images/visualizer.jpg
+description: "A browser-built fireplace for music, inspired by the Winamp years."
+image: /assets/og/2026-01-23-music-visualizer-nostalgia.png
+thumbnail: /assets/images/visualizer.jpg
 ---
 
 ![Sound Visualizer]({{ site.baseurl }}/assets/images/visualizer.jpg)

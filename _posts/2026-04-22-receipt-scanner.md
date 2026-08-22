@@ -1,6 +1,9 @@
 ---
 title: "I Built a Receipt Scanner Instead of Paying $99/Month"
 date: 2026-04-22 14:00:00 -0500
+description: "A browser-first receipt workflow built after discovering that an afternoon of bookkeeping apparently costs $99 a month."
+image: /assets/og/2026-04-22-receipt-scanner.png
+thumbnail: /assets/images/receipt.jpg
 ---
 
 ![Illustration of a Rona receipt for $34.71]({{ site.baseurl }}/assets/images/receipt.jpg)

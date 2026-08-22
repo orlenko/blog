@@ -1,6 +1,9 @@
 ---
 title: "TIL: iTerm2 Remembers Your Windows So You Don't Have To"
 date: 2026-02-25 02:32:38 -0500
+description: "The iTerm2 feature that quietly solves the post-reboot ritual of rebuilding your terminal workspace."
+image: /assets/og/2026-02-25-iterm2-window-arrangements.png
+thumbnail: /assets/images/2026-02-25-iterm2-arrangement.jpg
 ---
 
 ![My iTerm2 workspace with a bunch of tabs]({{ site.baseurl }}/assets/images/2026-02-25-iterm2-arrangement.jpg)

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-22T17:00:00Z",
+  "title": "Design System: Bjola Open Source",
+  "extensions": {
+    "colorMeta": {
+      "workbench-paper": {
+        "role": "neutral",
+        "displayName": "Workbench Paper",
+        "canonical": "#F3EFE5",
+        "tonalRamp": ["#26241F", "#4D493F", "#746E60", "#9B9481", "#C2B9A1", "#D8D0BC", "#E7E0D1", "#F3EFE5"]
+      },
+      "ledger-paper": {
+        "role": "neutral",
+        "displayName": "Ledger Paper",
+        "canonical": "#FFFDF7",
+        "tonalRamp": ["#272620", "#514E42", "#7A7663", "#A49E85", "#CDC6A7", "#E1DAC0", "#F2EDD8", "#FFFDF7"]
+      },
+      "workshop-ink": {
+        "role": "neutral",
+        "displayName": "Workshop Ink",
+        "canonical": "#171715",
+        "tonalRamp": ["#171715", "#373733", "#585752", "#797771", "#9A9790", "#BBB7AF", "#DCD7CF", "#F7F2EA"]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#5C5A54",
+        "tonalRamp": ["#1D1C1A", "#393835", "#5C5A54", "#79766F", "#96938A", "#B4B0A5", "#D2CDC1", "#F0EADD"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Workbench Rule",
+        "canonical": "#B8B1A1",
+        "tonalRamp": ["#28251F", "#4B463B", "#6F6757", "#928875", "#B8B1A1", "#CEC7B8", "#E4DED3", "#F8F4EC"]
+      },
+      "instrument-cobalt": {
+        "role": "primary",
+        "displayName": "Instrument Cobalt",
+        "canonical": "#164A9B",
+        "tonalRamp": ["#07172F", "#0C2852", "#123B7A", "#164A9B", "#3470C2", "#6796DA", "#A6BDEA", "#E5ECFA"]
+      },
+      "safety-orange": {
+        "role": "secondary",
+        "displayName": "Safety Orange",
+        "canonical": "#A43F13",
+        "tonalRamp": ["#321304", "#572108", "#7E300D", "#A43F13", "#C86635", "#DF916D", "#EFBCA6", "#FBE9DF"]
+      },
+      "signal-yellow": {
+        "role": "secondary",
+        "displayName": "Signal Yellow",
+        "canonical": "#F2B84B",
+        "tonalRamp": ["#352508", "#65470E", "#956A19", "#C68F2C", "#F2B84B", "#F6CB79", "#F9DDA7", "#FDF1D7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Homepage statement only." },
+      "headline": { "displayName": "Headline", "purpose": "Section and article titles." },
+      "body": { "displayName": "Reading", "purpose": "Explanations and long-form Notes." },
+      "label": { "displayName": "Workbench Label", "purpose": "Status, sequence, dates, and navigation." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "control-feedback", "value": "120ms ease", "purpose": "Hard-offset hover feedback on buttons only." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "620px" },
+      { "name": "stacked", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action on a light workbench surface.",
+      "html": "<a class=\"ds-button-primary\" href=\"#\">READ ALL NOTES →</a>",
+      "css": ".ds-button-primary { display:inline-flex; min-height:44px; padding:11px 15px; align-items:center; background:#164A9B; color:#FFFDF7; border:1px solid #171715; border-radius:2px; font:600 12px/1.25 Consolas,monospace; letter-spacing:.035em; text-decoration:none; transition:transform 120ms ease,box-shadow 120ms ease; } .ds-button-primary:hover { transform:translate(-2px,-2px); box-shadow:2px 2px 0 #171715; } .ds-button-primary:focus-visible { outline:3px solid #F2B84B; outline-offset:3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A repository or sibling navigation action.",
+      "html": "<a class=\"ds-button-secondary\" href=\"#\">REPOSITORY ↗</a>",
+      "css": ".ds-button-secondary { display:inline-flex; min-height:44px; padding:11px 15px; align-items:center; background:#FFFDF7; color:#171715; border:1px solid #171715; border-radius:2px; font:600 12px/1.25 Consolas,monospace; letter-spacing:.035em; text-decoration:none; transition:transform 120ms ease,box-shadow 120ms ease; } .ds-button-secondary:hover { transform:translate(-2px,-2px); box-shadow:2px 2px 0 #171715; } .ds-button-secondary:focus-visible { outline:3px solid #F2B84B; outline-offset:3px; }"
+    },
+    {
+      "name": "Status Label",
+      "kind": "chip",
+      "refersTo": "status-label",
+      "description": "A written maturity label; colour is reinforcement only.",
+      "html": "<span class=\"ds-status\">INSTALLABLE</span>",
+      "css": ".ds-status { display:inline-block; padding:5px 8px; background:#F2B84B; color:#171715; border:1px solid #171715; border-radius:2px; font:700 11px/1.25 Consolas,monospace; letter-spacing:.045em; text-transform:uppercase; }"
+    },
+    {
+      "name": "Workshop Navigation",
+      "kind": "nav",
+      "description": "Compact visible navigation without a floating shell or hidden mobile menu.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">PROJECTS</a><a href=\"#\">NOTES</a><a href=\"#\">GITHUB ↗</a></nav>",
+      "css": ".ds-nav { display:flex; flex-wrap:wrap; gap:8px 28px; padding:20px; background:#FFFDF7; border-bottom:1px solid #171715; font:600 12px/1.3 Consolas,monospace; letter-spacing:.04em; } .ds-nav a { padding:8px 0; color:#171715; border-bottom:2px solid transparent; text-decoration:none; } .ds-nav a:hover { color:#164A9B; border-bottom-color:currentColor; } .ds-nav a:focus-visible { outline:3px solid #F2B84B; outline-offset:3px; }"
+    },
+    {
+      "name": "Project Ledger Row",
+      "kind": "card",
+      "description": "An honest project entry ordered by sequence, status, purpose, and source.",
+      "html": "<article class=\"ds-ledger\"><div class=\"ds-ledger-index\">02 / PYTHON</div><span class=\"ds-status\">INSTALLABLE</span><h3>Agent Observer + Agent Pair</h3><p>See which coding-agent sessions need attention, or connect two directly.</p><a href=\"#\">SOURCE ↗</a></article>",
+      "css": ".ds-ledger { max-width:720px; padding:32px; background:#FFFDF7; color:#171715; border:1px solid #171715; font:400 16px/1.55 Georgia,serif; } .ds-ledger-index { margin-bottom:24px; color:#5C5A54; font:600 11px/1.4 Consolas,monospace; letter-spacing:.05em; } .ds-ledger h3 { margin:16px 0 8px; font:750 38px/.95 Arial,sans-serif; letter-spacing:-.045em; } .ds-ledger a { color:#164A9B; font:600 11px/1.4 Consolas,monospace; } .ds-ledger a:focus-visible { outline:3px solid #F2B84B; outline-offset:3px; } .ds-status { display:inline-block; padding:5px 8px; background:#F2B84B; border:1px solid #171715; border-radius:2px; font:700 11px/1.25 Consolas,monospace; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Annotated Workbench",
+    "overview": "The physical scene is a well-used electronics workbench after lunch: an open lab notebook, labelled drawers, one cobalt instrument panel, and evidence of real work rather than staged decoration. The composition behaves like a project ledger. Rules, sequence numbers, annotations, and status labels create the structure; restrained irregularity supplies the human layer. This is not a fake control panel. Decoration never interrupts reading order, and the blog remains editorial and calm.",
+    "keyCharacteristics": [
+      "Paper, ink, cobalt, and one safety accent.",
+      "One dominant project followed by ledger rows, never an equal card wall.",
+      "Visible status language and compact technical metadata.",
+      "Quiet article typography with generous reading measure.",
+      "Flat surfaces, hard rules, and almost no ornamental motion."
+    ],
+    "rules": [
+      { "name": "The Instrument Panel Rule", "body": "Cobalt may own one large region or a few controls, but never every surface on the page.", "section": "colors" },
+      { "name": "The Written Status Rule", "body": "Colour may reinforce a status label; the words must carry the meaning by themselves.", "section": "colors" },
+      { "name": "The Three Voices Rule", "body": "Archivo speaks names, Literata explains, and Azeret Mono labels. Never assign a fourth personality to the page.", "section": "typography" },
+      { "name": "The Flat Workbench Rule", "body": "If a soft shadow is needed to separate two surfaces, the hierarchy or border is wrong.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do let one featured project carry most of the visual weight.",
+      "Do write every status in plain text and define the vocabulary once.",
+      "Do retain a 68ch maximum for article prose and generous line height.",
+      "Do use one-pixel rules, sequence numbers, and annotations to create rhythm.",
+      "Do make every repository, demo, feed, and note reachable by keyboard."
+    ],
+    "donts": [
+      "Don't build a generic SaaS landing page with a hero slogan, equal feature cards, and repeated calls to action.",
+      "Don't use corporate portfolio theatre or inflated claims about reach and maturity.",
+      "Don't use fake terminals, decorative dashboards, neon AI imagery, glassmorphism, or gradients used as a substitute for hierarchy.",
+      "Don't turn Notes into a content-heavy magazine or make publishing a short note ceremonial.",
+      "Don't make a visual clone of Bjola.ca. The two sites are siblings, not duplicates.",
+      "Don't use orange text below normal-text contrast or colour alone to encode status."
+    ]
+  }
+}

@@ -1,439 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#164A9B">
+    {% seo %}
+    {% feed_meta %}
 
-  {% comment %} Title, description, canonical, OG/Twitter text, JSON-LD. {% endcomment %}
-  {% seo %}
-  {% feed_meta %}
+    <link rel="icon" type="image/png" href="{{ '/assets/images/bjola_logo.png' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&amp;family=Azeret+Mono:wght@400;600;700&amp;family=Literata:opsz,wght@7..72,400;7..72,600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body class="{{ page.body_class | default: 'page' }}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-  {% comment %} Per-post share card (1200x630 PNG), generated in CI by scripts/gen-og-cards.sh. {% endcomment %}
-  {% if page.is_home %}
-    {% assign og_card = '/assets/og/home.png' %}
-  {% elsif page.slug %}
-    {% assign og_card = '/assets/og/' | append: page.slug | append: '.png' %}
-  {% else %}
-    {% assign og_card = '/assets/og/home.png' %}
-  {% endif %}
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ og_card }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ og_card }}">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fafaf9;
-      --fg: #1c1917;
-      --accent: #b45309;
-      --muted: #78716c;
-      --border: #e7e5e4;
-      --code-bg: #f5f5f4;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { font-size: 16px; }
-
-    @media (min-width: 768px) {
-      html { font-size: 18px; }
-    }
-
-    @media (min-width: 1200px) {
-      html { font-size: 20px; }
-    }
-
-    body {
-      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Main container for homepage */
-    .container {
-      width: 100%;
-      max-width: 42rem;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .container { padding: 3rem 2rem; }
-    }
-
-    /* Page layout for posts - sidebar + content */
-    .page-layout {
-      display: block;
-      padding: 1.5rem;
-      max-width: 42rem;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .page-layout { padding: 3rem 2rem; }
-    }
-
-    @media (min-width: 1100px) {
-      .page-layout {
-        display: grid;
-        grid-template-columns: 180px 1fr;
-        gap: 3rem;
-        max-width: 56rem;
-        padding: 3rem 2rem;
-      }
-    }
-
-    /* Sidebar */
-    .sidebar {
-      display: none;
-    }
-
-    @media (min-width: 1100px) {
-      .sidebar {
-        display: block;
-        position: sticky;
-        top: 3rem;
-        align-self: start;
-      }
-    }
-
-    .sidebar .avatar {
-      display: block;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      flex-shrink: 0;
-    }
-
-    .sidebar .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      margin: 0;
-      border-radius: 0;
-    }
-
-    .sidebar .site-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--fg);
-      margin-bottom: 0.25rem;
-      line-height: 1.3;
-    }
-
-    .sidebar .site-title a {
-      color: var(--fg);
-    }
-
-    .sidebar .site-title a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .sidebar .site-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* Mobile header for posts (shown below 1100px) */
-    .mobile-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    @media (min-width: 1100px) {
-      .mobile-header { display: none; }
-    }
-
-    .mobile-header .avatar {
-      display: block;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .mobile-header .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      margin: 0;
-      border-radius: 0;
-    }
-
-    .mobile-header .site-info h1 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin: 0 0 0.1rem 0;
-    }
-
-    .mobile-header .site-info h1 a {
-      color: var(--fg);
-    }
-
-    .mobile-header .site-info p {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* Content area */
-    .content {
-      min-width: 0;
-    }
-
-    main { margin-bottom: 3rem; }
-
-    h1, h2, h3 {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin: 2rem 0 1rem;
-      line-height: 1.3;
-    }
-
-    h1 { font-size: 1.75rem; }
-    h2 { font-size: 1.35rem; }
-    h3 { font-size: 1.1rem; }
-
-    p, ul, ol { margin-bottom: 1.25rem; }
-    ul, ol { padding-left: 1.5rem; }
-    li { margin-bottom: 0.25rem; }
-
-    code {
-      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
-      background: var(--code-bg);
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      font-size: 0.85em;
-    }
-
-    pre {
-      background: var(--code-bg);
-      padding: 1.25rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border);
-    }
-
-    pre code {
-      background: none;
-      padding: 0;
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    blockquote {
-      border-left: 3px solid var(--accent);
-      padding-left: 1.25rem;
-      color: var(--muted);
-      margin: 1.5rem 0;
-      font-style: italic;
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 2.5rem 0;
-    }
-
-    .post-meta {
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-family: 'Inter', sans-serif;
-      margin-bottom: 2rem;
-    }
-
-    /* Post list styles */
-    .post-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .post-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .post-item:last-child { border-bottom: none; }
-
-    .post-thumb {
-      flex-shrink: 0;
-      display: block;
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .post-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      margin: 0;
-      border-radius: 0;
-    }
-
-    @media (min-width: 768px) {
-      .post-thumb {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    .post-text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .post-item h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.2rem;
-    }
-
-    .post-item .date {
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-family: 'Inter', sans-serif;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .post-item .excerpt {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* Hero section for homepage */
-    .hero {
-      position: relative;
-      margin: -1.5rem -1.5rem 2rem -1.5rem;
-      padding: 3rem 1.5rem;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0 0 12px 12px;
-      overflow: hidden;
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        margin: -3rem -2rem 3rem -2rem;
-        padding: 4rem 2rem;
-        border-radius: 0 0 16px 16px;
-      }
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0.95));
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      margin: 0 0 0.5rem 0;
-    }
-
-    @media (min-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-    }
-
-    footer {
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-family: 'Inter', sans-serif;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  {% if page.is_home %}
-  <div class="container">
-    <main>
-      {{ content }}
-    </main>
-    <footer>
-      Powered by late-night dictation, Claude Code, and stubbornness. · <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    </footer>
-  </div>
-  {% else %}
-  <div class="page-layout">
-    <aside class="sidebar">
-      <a href="{{ site.baseurl }}/" class="avatar" title="Home">
-        <img src="{{ site.baseurl }}/assets/images/dog.jpg" alt="Blog avatar">
-      </a>
-      <div class="site-title"><a href="{{ site.baseurl }}/">{{ site.title }}</a></div>
-      <div class="site-desc">{{ site.description }}</div>
-    </aside>
-    <div class="content">
-      <div class="mobile-header">
-        <a href="{{ site.baseurl }}/" class="avatar">
-          <img src="{{ site.baseurl }}/assets/images/dog.jpg" alt="Blog avatar">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/bjola_logo.png' | relative_url }}" width="75" height="71" alt="">
+          <span class="brand__type">
+            <strong>Bjola</strong>
+            <small>Open source workshop</small>
+          </span>
         </a>
-        <div class="site-info">
-          <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-          <p>{{ site.description }}</p>
-        </div>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="{{ '/#projects' | relative_url }}">Projects</a>
+          <a href="{{ '/notes/' | relative_url }}">Notes</a>
+          <a href="https://github.com/orlenko" rel="me">GitHub ↗</a>
+        </nav>
       </div>
-      <main>
-        {{ content }}
-      </main>
-      <footer>
-        Powered by late-night dictation, Claude Code, and stubbornness. · <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-      </footer>
-    </div>
-  </div>
-  {% endif %}
-</body>
+    </header>
+
+    {{ content }}
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div>
+          <p class="site-footer__name">Bjola Software Inc.</p>
+          <p>Useful tools, unfinished questions, and notes from the workbench.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+          <a href="{{ '/sitemap.xml' | relative_url }}">Sitemap</a>
+          <a href="https://bjola.ca">Company</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
 </html>

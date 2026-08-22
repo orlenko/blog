@@ -2,6 +2,8 @@
 title: "How I Finished a Paper Book Without Reading It"
 date: 2026-06-16 17:00:00 -0400
 description: "For the paper book you keep meaning to finish — photograph the next twenty pages and let the car read them aloud."
+image: /assets/og/2026-06-16-scan2speech.png
+thumbnail: /assets/images/openbook.png
 ---
 
 ![Open paper book on a wooden table, sunlit window, vase of flowers nearby]({{ site.baseurl }}/assets/images/openbook.png)

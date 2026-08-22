@@ -1,7 +1,9 @@
 ---
 title: "I Forgot What I Did This Month (So I Built a Tool)"
 date: 2026-01-23 09:00:00 +0000
-image: /assets/images/robot.jpg
+description: "What happens when parallel coding agents make you productive enough to forget what you actually shipped."
+image: /assets/og/2026-01-23-tracking-your-ai-powered-chaos.png
+thumbnail: /assets/images/robot.jpg
 ---
 
 ![Claude Activity Logger]({{ site.baseurl }}/assets/images/robot.jpg)

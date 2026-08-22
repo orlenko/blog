@@ -2,6 +2,7 @@
 title: "What Was `[image 4]` Again?"
 date: 2026-06-16 19:00:00 -0400
 description: "A tiny script to preview the images you've pasted into a Claude Code session."
+image: /assets/og/2026-06-16-what-was-image-4-again.png
 ---
 
 A small annoyance that built up over months: when you paste an image into Claude Code, it gets stored on disk and referenced in the scrollback as `[image 1]`, `[image 2]`, `[image 3]`, on up. The session has the pictures. You do not — not in any visible way. So if you go back later to ask "wait, did I paste the right diagram earlier?", the chat won't tell you. It just keeps saying `[image 4]`.

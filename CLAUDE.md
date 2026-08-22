@@ -1,6 +1,8 @@
-# Brain Dump Blog - Claude Instructions
+# Bjola Notes - Claude Instructions
 
-This is a zero-friction blog. The human talks, you listen, you publish. Simple.
+This is the zero-friction Notes section of bjola.org. The human talks, you
+listen, you publish. Simple. The project ledger lives in the same repository,
+but publishing a note does not require touching it.
 
 ## The Voice
 
@@ -95,7 +97,8 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    ---
    title: "Title Here"
    date: YYYY-MM-DD HH:MM:SS -0800
-   description: "One-sentence hook (optional but recommended)."
+   description: "One-sentence hook."
+   image: /assets/og/YYYY-MM-DD-slug-title.png
    ---
 
    Content here...
@@ -103,26 +106,52 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
 
    **Important**: Include the full timestamp (with time and timezone) so posts on the same day sort correctly. Most recent posts should appear first on the homepage.
 
-   **`description:`** is optional. If present, it becomes the post's meta description and the text shown when the link is shared on social / search. If absent, the post's first paragraph is used automatically. Write it like a sharp one-liner, not SEO bait.
+   **`description:`** is required. It becomes the post's meta description and
+   the text shown in search and social previews. Write it like a sharp
+   one-liner, not SEO bait.
+
+   **`image:`** is required and must match the post filename. The build creates
+   that share card automatically before Jekyll renders the page.
 
 5. **Handle images** - If they paste screenshots:
    - Save to `assets/images/YYYY-MM-DD-descriptive-name.png`
-   - Reference as `![description]({{ site.baseurl }}/assets/images/filename.png)`
+   - Add `thumbnail: /assets/images/YYYY-MM-DD-descriptive-name.png` to the
+     post frontmatter so the image appears in the Notes index
+   - Reference as `![description]({{ '/assets/images/filename.png' | relative_url }})`
 
-6. **Commit and push**:
+6. **Commit and push only the new post and its images**. Inspect the paths
+   first; never scoop up unrelated workshop edits with `git add -A`:
    ```bash
-   git add -A
+   git status --short
+   git diff -- _posts/YYYY-MM-DD-slug-title.md assets/images/YYYY-MM-DD-descriptive-name.png
+   git add -- _posts/YYYY-MM-DD-slug-title.md assets/images/YYYY-MM-DD-descriptive-name.png
+   git diff --cached --check
+   git diff --cached --stat
    git commit -m "New post: Title of the post"
    git push origin main
    ```
+   Omit the image path from each command when the post has no image. If any
+   other path is staged, stop and ask before committing.
 
-7. **Confirm** - Tell them it's live (GitHub Actions takes ~1 min to deploy)
+7. **Verify the deployment**. Find the Pages run for the commit, wait for it,
+   then check the final post URL:
+   ```bash
+   run_id="$(gh run list --workflow=pages.yml --commit="$(git rev-parse HEAD)" \
+     --limit=1 --json=databaseId --jq='.[0].databaseId')"
+   test -n "$run_id"
+   gh run watch "$run_id" --exit-status
+   curl --fail --silent --show-error --location \
+     https://bjola.org/YYYY/MM/DD/slug-title.html >/dev/null
+   ```
+   If the new run has not appeared yet, check the list again before invoking
+   `gh run watch`. Only after the run succeeds and the URL returns successfully
+   should you tell the user that the post is live at `https://bjola.org/notes/`.
 
 ## Social / Search Metadata (automatic)
 
 Every post is automatically search-findable, LLM-findable, and shareable — no manual steps:
 
-- **Share cards**: `scripts/gen-og-cards.sh` runs in CI and generates a 1200×630 PNG per post (the title over one of the background photos). That's the image that appears when a link is pasted into X/Slack/iMessage/LinkedIn. Nothing to do per post — it just happens. (You can preview locally with `bash scripts/gen-og-cards.sh` if ImageMagick is installed; output lands in `assets/og/`, which is gitignored.)
+- **Share cards**: `scripts/gen-og-cards.sh` runs in CI and generates a 1200×630 Bjola card per post. That's the image that appears when a link is pasted into X/Slack/iMessage/LinkedIn. Nothing to do per post — it just happens. (You can preview locally with `bash scripts/gen-og-cards.sh` if ImageMagick is installed; output lands in `assets/og/`, which is gitignored.)
 - **OG / Twitter tags + JSON-LD**: emitted by `jekyll-seo-tag` via `{% seo %}` in `_layouts/default.html`.
 - **Feed + sitemap**: `jekyll-feed` publishes `/feed.xml` (RSS, good for readers and LLM ingestion); `jekyll-sitemap` publishes `/sitemap.xml` for crawlers.
 
@@ -164,10 +193,9 @@ When in doubt, read it out loud. If it sounds like a press release or a LinkedIn
 
 ## Site Info
 
-- **URL**: `https://orlenko.github.io/blog/`
-- **Theme**: Light, warm, readable (Source Serif + Inter fonts)
+- **URL**: `https://bjola.org/notes/`
+- **Theme**: Annotated workbench for the project ledger; quiet editorial reading for Notes
 - **Build**: Jekyll via GitHub Actions
-- **Backgrounds**: Random photos from `assets/backgrounds/` on homepage
 - **Friction level**: Zero. That's the whole point.
 
 ## Remember

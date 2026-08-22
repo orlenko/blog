@@ -1,0 +1,18 @@
+<article class="note-row">
+  <a class="note-row__visual" href="{{ include.post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {% if include.post.thumbnail %}
+      <img src="{{ include.post.thumbnail | relative_url }}" alt="" loading="lazy">
+    {% else %}
+      <span>NOTE<br>{{ include.number }}</span>
+    {% endif %}
+  </a>
+  <div class="note-row__copy">
+    <p class="kicker">{{ include.post.date | date: "%Y.%m.%d" }}</p>
+    <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+    {% if include.post.description %}
+      <p>{{ include.post.description }}</p>
+    {% else %}
+      <p>{{ include.post.excerpt | strip_html | normalize_whitespace | truncatewords: 30 }}</p>
+    {% endif %}
+  </div>
+</article>

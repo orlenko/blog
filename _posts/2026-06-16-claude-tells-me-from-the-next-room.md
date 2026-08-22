@@ -2,6 +2,8 @@
 title: "Claude Finishes Its Work and Tells Me About It From the Next Room"
 date: 2026-06-16 18:00:00 -0400
 description: "How I get Claude to announce, out loud, what each parallel session just did."
+image: /assets/og/2026-06-16-claude-tells-me-from-the-next-room.png
+thumbnail: /assets/images/aisay.jpg
 ---
 
 ![Halftone illustration of a head shouting, three speech bursts coming from the mouth, blue on black]({{ site.baseurl }}/assets/images/aisay.jpg)

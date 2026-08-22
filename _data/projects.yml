@@ -1,0 +1,106 @@
+reviewed: "August 2026"
+
+statuses:
+  installable: "Packaged or documented for installation."
+  live_tool: "Usable now in a web browser."
+  alpha: "Working software whose interface and behaviour may still change."
+  source_experiment: "Code to inspect or build, without a supported release."
+
+featured:
+  - id: undrudge
+    name: Undrudge
+    sequence: "01"
+    status: installable
+    status_label: Installable
+    language: Python
+    short: "Find the chores hiding in your agent and shell history."
+    description: >-
+      A local background watchman that spots commands and prompt patterns you
+      keep repeating, sanitizes them before storage, and leaves practical
+      automation recommendations as Markdown.
+    repository: "https://github.com/orlenko/undrudge"
+    note: "/2026/05/04/undrudge.html"
+    install: "uv tool install git+https://github.com/orlenko/undrudge.git"
+
+  - id: agents
+    name: Agent Observer + Agent Pair
+    sequence: "02"
+    status: installable
+    status_label: Installable plugins
+    language: Python + TypeScript
+    short: "See which coding-agent sessions need attention, or connect two directly."
+    description: >-
+      Two local-first plugins for supervising busy agent work. Observer gathers
+      attention signals into one private dashboard; Pair provides a durable,
+      TLS-pinned mailbox between exactly two sessions.
+    repository: "https://github.com/orlenko/skills"
+
+  - id: aitts
+    name: aisay / aitts
+    sequence: "03"
+    status: installable
+    status_label: Installable
+    language: Python
+    short: "Text-to-speech tools that belong at the command line."
+    description: >-
+      Speak short messages immediately or turn a long article into a queued
+      audio playlist. The small command is useful for hearing when parallel
+      coding sessions finish without watching every terminal.
+    repository: "https://github.com/orlenko/aitts"
+    note: "/2026/06/16/claude-tells-me-from-the-next-room.html"
+    install: "uv tool install aisay"
+
+  - id: receipts
+    name: Receipts
+    sequence: "04"
+    status: live_tool
+    status_label: Live browser tool
+    language: JavaScript
+    short: "Turn receipt photos into clean scans and a reviewable spreadsheet."
+    description: >-
+      A browser-only receipt workflow with local image correction, structured
+      extraction, batch recovery, and no account. Images and the user's API key
+      go directly from their browser to OpenAI.
+    repository: "https://github.com/orlenko/receipts"
+    demo: "https://receipts.clickable.one"
+    note: "/2026/04/22/receipt-scanner.html"
+
+  - id: aidebate
+    name: AI Debate
+    sequence: "05"
+    status: alpha
+    status_label: Alpha
+    language: Python
+    short: "Let several coding agents cross-examine an engineering decision."
+    description: >-
+      An orchestrator for structured debates between authenticated Claude,
+      Gemini, Codex, and other interactive CLIs, with a live view and a durable
+      Markdown archive of each result.
+    repository: "https://github.com/orlenko/aidebate"
+
+lab:
+  - name: TAKT
+    status_label: Source experiment
+    language: Swift + Kotlin
+    description: "A native rhythm machine and its Android running companion."
+    repository: "https://github.com/orlenko/takt"
+  - name: Agentpool
+    status_label: Installable
+    language: Go
+    description: "Select an available account across multiple paid coding-agent subscriptions."
+    repository: "https://github.com/orlenko/agentpool"
+  - name: Scan2Speech
+    status_label: Source experiment
+    language: JavaScript
+    description: "Turn photographs of paper book pages into a browser-based listening queue."
+    repository: "https://github.com/orlenko/scan2speech"
+  - name: Load Bearing
+    status_label: Source experiment
+    language: Python
+    description: "Find and compare overused metaphorical language in AI conversation logs."
+    repository: "https://github.com/orlenko/load-bearing"
+  - name: Sound Visualizer
+    status_label: Source experiment
+    language: TypeScript
+    description: "A browser-built fireplace for music, inspired by the Winamp years."
+    repository: "https://github.com/orlenko/sound-visualizer"

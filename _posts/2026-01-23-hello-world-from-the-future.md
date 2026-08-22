@@ -1,7 +1,9 @@
 ---
 title: "Hello World from the Future of Blogging"
 date: 2026-01-23 08:00:00 +0000
-image: /assets/images/news.JPG
+description: "A blog built around one premise: talking should be enough to publish."
+image: /assets/og/2026-01-23-hello-world-from-the-future.png
+thumbnail: /assets/images/news.JPG
 ---
 
 ![Breaking News: Everything Ends May 31st]({{ site.baseurl }}/assets/images/news.JPG)

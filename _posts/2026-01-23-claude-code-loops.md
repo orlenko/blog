@@ -1,7 +1,9 @@
 ---
 title: "Escaping the Review Bottleneck: Two Patterns for Automating Claude Code Sessions"
 date: 2026-01-23 16:30:00 +0000
-image: /assets/images/ralph.jpg
+description: "Two patterns for automating AI-assisted code review without turning the whole process into a prompt and a prayer."
+image: /assets/og/2026-01-23-claude-code-loops.png
+thumbnail: /assets/images/ralph.jpg
 ---
 
 ![Ralph Wiggum]({{ site.baseurl }}/assets/images/ralph.jpg)
