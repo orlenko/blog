@@ -65,9 +65,24 @@ featured:
     demo: "https://receipts.clickable.one"
     note: "/2026/04/22/receipt-scanner.html"
 
+  - id: scan2speech
+    name: Scan2Speech
+    sequence: "05"
+    status: live_tool
+    status_label: Live browser tool
+    language: JavaScript
+    short: "Turn photos of paper pages into an audiobook queue."
+    description: >-
+      A static, bring-your-own-key tool that transcribes page photos, lets the
+      reader correct the text, and generates a continuous listening queue.
+      Images and the user's API key go directly from their browser to OpenAI.
+    repository: "https://github.com/orlenko/scan2speech"
+    demo: "https://orlenko.github.io/scan2speech/"
+    note: "/2026/06/16/scan2speech.html"
+
   - id: aidebate
     name: AI Debate
-    sequence: "05"
+    sequence: "06"
     status: alpha
     status_label: Alpha
     language: Python
@@ -89,11 +104,6 @@ lab:
     language: Go
     description: "Select an available account across multiple paid coding-agent subscriptions."
     repository: "https://github.com/orlenko/agentpool"
-  - name: Scan2Speech
-    status_label: Source experiment
-    language: JavaScript
-    description: "Turn photographs of paper book pages into a browser-based listening queue."
-    repository: "https://github.com/orlenko/scan2speech"
   - name: Load Bearing
     status_label: Source experiment
     language: Python
