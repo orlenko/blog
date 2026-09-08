@@ -5,6 +5,17 @@ description: "Small, inspectable software from Bjola: practical tools, active ex
 image: /assets/og/home.png
 body_class: home
 ---
+{% assign project_posts = site.posts | where_exp: 'post', 'post.project' %}
+{% assign project_groups = project_posts | group_by_exp: 'post', 'post.project.id' %}
+{% assign posted_project_ids = project_groups | map: 'name' %}
+{% assign latest_project_post = project_posts | first %}
+{% if latest_project_post %}
+  {% assign lead = latest_project_post.project %}
+  {% assign lead_note = latest_project_post.url %}
+{% else %}
+  {% assign lead = site.data.projects.featured | first %}
+  {% assign lead_note = lead.note %}
+{% endif %}
 <main id="main-content">
   <section class="workbench-hero" aria-labelledby="hero-title">
     <div class="workbench-hero__statement">
@@ -31,46 +42,43 @@ body_class: home
       <p>Each label describes what you can do with the project today. No stars, trend lines, or archaeological guesses from the last commit date.</p>
     </header>
 
-    {% assign lead = site.data.projects.featured | first %}
     <article class="lead-project" id="{{ lead.id }}">
       <div class="lead-project__copy">
-        <div class="project-index"><span>{{ lead.sequence }}</span><span>{{ lead.language }}</span></div>
+        <div class="project-index"><span>01</span><span>{{ lead.language }}</span></div>
         <span class="status status--light">{{ lead.status_label }}</span>
         <h3>{{ lead.name }}</h3>
         <p class="project-short">{{ lead.short }}</p>
         <p>{{ lead.description }}</p>
         <div class="project-actions">
           <a class="button button--paper" href="{{ lead.repository }}">Repository ↗</a>
-          {% if lead.note %}<a class="button button--ghost-light" href="{{ lead.note | relative_url }}">Build note</a>{% endif %}
+          {% if lead_note %}<a class="button button--ghost-light" href="{{ lead_note | relative_url }}">Build note</a>{% endif %}
         </div>
       </div>
       <div class="lead-project__diagram" role="group" aria-label="{{ lead.name | escape }} workflow">
+        {% if lead.workflow %}
         <p class="kicker">{{ lead.workflow.label }}</p>
         <ol>
           {% for step in lead.workflow.steps %}
             <li><span>{{ forloop.index | prepend: '0' }}</span>{{ step }}</li>
           {% endfor %}
         </ol>
-        <code>{{ lead.install }}</code>
+        {% endif %}
+        {% if lead.install %}<code>{{ lead.install }}</code>{% endif %}
       </div>
     </article>
 
     <div class="project-rows">
-      {% for project in site.data.projects.featured offset:1 %}
-        <article class="project-row" id="{{ project.id }}">
-          <div class="project-index"><span>{{ project.sequence }}</span><span>{{ project.language }}</span></div>
-          <div class="project-row__body">
-            <span class="status">{{ project.status_label }}</span>
-            <h3>{{ project.name }}</h3>
-            <p class="project-short">{{ project.short }}</p>
-            <p>{{ project.description }}</p>
-          </div>
-          <div class="project-row__actions">
-            {% if project.demo %}<a href="{{ project.demo }}">Open tool ↗</a>{% endif %}
-            <a href="{{ project.repository }}">Source ↗</a>
-            {% if project.note %}<a href="{{ project.note | relative_url }}">Read note</a>{% endif %}
-          </div>
-        </article>
+      {% assign project_number = 1 %}
+      {% for group in project_groups offset:1 %}
+        {% assign project_post = group.items | first %}
+        {% assign project_number = project_number | plus: 1 %}
+        {% include project-row.html project=project_post.project note=project_post.url number=project_number %}
+      {% endfor %}
+      {% for project in site.data.projects.featured %}
+        {% unless posted_project_ids contains project.id or project.id == lead.id %}
+          {% assign project_number = project_number | plus: 1 %}
+          {% include project-row.html project=project note=project.note number=project_number %}
+        {% endunless %}
       {% endfor %}
     </div>
   </section>

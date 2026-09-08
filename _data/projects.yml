@@ -7,30 +7,8 @@ statuses:
   source_experiment: "Code to inspect or build, without a supported release."
 
 featured:
-  - id: aiq
-    name: aiq
-    sequence: "01"
-    status: installable
-    status_label: Installable
-    language: Go
-    short: "Keep Claude and Codex orchestrations running across account limits."
-    description: >-
-      Routes sessions and workers across subscriptions. Supervised long-running
-      jobs hand off to another account or provider as quota runs low.
-    repository: "https://github.com/orlenko/aiq"
-    note: "/2026/09/08/the-show-must-go-on.html"
-    install: "go install github.com/orlenko/aiq/cmd/aiq@latest"
-    workflow:
-      label: "Quota-aware routing + handoff"
-      steps:
-        - "Poll account limits"
-        - "Route sessions + workers"
-        - "Wrap up before quota runs out"
-        - "Continue on an available account"
-
   - id: undrudge
     name: Undrudge
-    sequence: "02"
     status: installable
     status_label: Installable
     language: Python
@@ -52,7 +30,6 @@ featured:
 
   - id: agents
     name: Agent Observer + Agent Pair
-    sequence: "03"
     status: installable
     status_label: Installable plugins
     language: Python + TypeScript
@@ -65,7 +42,6 @@ featured:
 
   - id: aitts
     name: aisay / aitts
-    sequence: "04"
     status: installable
     status_label: Installable
     language: Python
@@ -80,7 +56,6 @@ featured:
 
   - id: receipts
     name: Receipts
-    sequence: "05"
     status: live_tool
     status_label: Live browser tool
     language: JavaScript
@@ -95,7 +70,6 @@ featured:
 
   - id: scan2speech
     name: Scan2Speech
-    sequence: "06"
     status: live_tool
     status_label: Live browser tool
     language: JavaScript
@@ -110,7 +84,6 @@ featured:
 
   - id: aidebate
     name: AI Debate
-    sequence: "07"
     status: alpha
     status_label: Alpha
     language: Python
@@ -127,11 +100,6 @@ lab:
     language: Swift + Kotlin
     description: "A native rhythm machine and its Android running companion."
     repository: "https://github.com/orlenko/takt"
-  - name: Agentpool
-    status_label: Installable
-    language: Go
-    description: "Select an available account across multiple paid coding-agent subscriptions."
-    repository: "https://github.com/orlenko/agentpool"
   - name: Load Bearing
     status_label: Source experiment
     language: Python

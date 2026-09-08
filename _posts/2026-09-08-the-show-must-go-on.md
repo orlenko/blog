@@ -4,6 +4,25 @@ date: 2026-09-08 15:21:00 -0400
 description: "I got tired of overnight jobs stopping at a usage limit while another subscription still had room. So I made aiq."
 image: /assets/og/2026-09-08-the-show-must-go-on.png
 thumbnail: /assets/images/2026-09-08-aiq-shift-change.png
+project:
+  id: aiq
+  name: aiq
+  status: installable
+  status_label: Installable
+  language: Go
+  short: "Keep Claude and Codex orchestrations running across account limits."
+  description: >-
+    Routes sessions and workers across subscriptions. Supervised long-running
+    jobs hand off to another account or provider as quota runs low.
+  repository: "https://github.com/orlenko/aiq"
+  install: "go install github.com/orlenko/aiq/cmd/aiq@latest"
+  workflow:
+    label: "Quota-aware routing + handoff"
+    steps:
+      - "Poll account limits"
+      - "Route sessions + workers"
+      - "Wrap up before quota runs out"
+      - "Continue on an available account"
 ---
 
 ![A cheerful robot crew hands over a shift logbook while a printing machine keeps running.]({{ '/assets/images/2026-09-08-aiq-shift-change.png' | relative_url }})

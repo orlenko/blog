@@ -113,6 +113,18 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    **`image:`** is required and must match the post filename. The build creates
    that share card automatically before Jekyll renders the page.
 
+   **Tool posts also need `project:` frontmatter.** Copy the structure from
+   `_posts/2026-09-08-the-show-must-go-on.md`: stable `id`, `name`, `status`,
+   `status_label`, `language`, `short`, `description`, `repository`, plus
+   `install` and `workflow` when useful. Use an existing ID when revisiting a
+   tool. Keep descriptions brief and verify repository links.
+
+   The normal CI/Jekyll build promotes the newest published tool post to the
+   homepage, derives its note link, retains earlier projects, and numbers the
+   list automatically. Do not also edit `_data/projects.yml` to promote a tool.
+   Ordinary notes omit `project:` and leave the lead project alone. Drafts stay
+   in `_drafts/` until the user approves publication.
+
 5. **Handle images** - If they paste screenshots:
    - Save to `assets/images/YYYY-MM-DD-descriptive-name.png`
    - Add `thumbnail: /assets/images/YYYY-MM-DD-descriptive-name.png` to the

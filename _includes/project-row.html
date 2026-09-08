@@ -1,0 +1,14 @@
+<article class="project-row" id="{{ include.project.id }}">
+  <div class="project-index"><span>{% if include.number < 10 %}0{% endif %}{{ include.number }}</span><span>{{ include.project.language }}</span></div>
+  <div class="project-row__body">
+    <span class="status">{{ include.project.status_label }}</span>
+    <h3>{{ include.project.name }}</h3>
+    <p class="project-short">{{ include.project.short }}</p>
+    <p>{{ include.project.description }}</p>
+  </div>
+  <div class="project-row__actions">
+    {% if include.project.demo %}<a href="{{ include.project.demo }}">Open tool ↗</a>{% endif %}
+    <a href="{{ include.project.repository }}">Source ↗</a>
+    {% if include.note %}<a href="{{ include.note | relative_url }}">Read note</a>{% endif %}
+  </div>
+</article>
