@@ -18,6 +18,7 @@ built, and honest about unfinished edges.
 Give Bjola's public software one coherent home. The site should make useful
 projects discoverable, distinguish shipped tools from experiments, and preserve
 the deliberately low-friction blog workflow: one dated Markdown file, one push.
+Notes are the homepage. The project catalogue has its own page at `/projects/`.
 
 The site does not sell consulting services. Bjola.ca remains the corporate and
 professional surface; Bjola.org is where the public work and the thinking around
@@ -41,8 +42,9 @@ used, and nothing has been polished into a showroom prop.
 
 ## Design Principles
 
-1. **Lead with working software.** A visitor should reach a repository, demo, or
-   install path without decoding marketing copy.
+1. **Lead with the notes.** Show recent posts immediately on the homepage.
+   Keep the project catalogue one navigation link away, with direct repository,
+   demo, and install links.
 2. **Label maturity honestly.** Status words describe observable availability,
    not enthusiasm, stars, or recent commit activity.
 3. **Make the workshop visible.** Notes and experiments belong near shipped

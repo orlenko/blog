@@ -36,7 +36,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Verify automatic homepage promotion
+      - name: Verify notes homepage and automatic project promotion
         run: bundle exec ruby scripts/test-homepage.rb
 
       - name: Build with Jekyll

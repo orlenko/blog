@@ -86,7 +86,8 @@ corporate portfolio theatre, and a visual clone of Bjola.ca.
 **Key Characteristics:**
 
 - Paper, ink, cobalt, and one safety accent.
-- One dominant project followed by ledger rows, never an equal card wall.
+- The Notes list is the homepage, with recent posts visible immediately.
+- The Projects page has one dominant project followed by ledger rows.
 - Visible status language and compact technical metadata.
 - Quiet article typography with generous reading measure.
 - Flat surfaces, hard rules, and almost no ornamental motion.
@@ -136,7 +137,7 @@ feel of real annotations rather than terminal cosplay.
 
 ### Hierarchy
 
-- **Display** (800, fluid 3–7rem, 0.92): The homepage statement only.
+- **Display** (800, fluid 3–7rem, 0.92): The statement on the Projects page.
 - **Headline** (750, fluid 2–4.5rem, 1): Section and article titles.
 - **Title** (700, 1.35–2rem, 1.1): Project names and note-list titles.
 - **Body** (400, 1rem, 1.72): Descriptions and articles, constrained to 68ch.

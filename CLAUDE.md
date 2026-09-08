@@ -1,8 +1,8 @@
 # Bjola Notes - Claude Instructions
 
-This is the zero-friction Notes section of bjola.org. The human talks, you
-listen, you publish. Simple. The project ledger lives in the same repository,
-but publishing a note does not require touching it.
+This is the zero-friction Notes homepage of bjola.org. The human talks, you
+listen, you publish. Simple. The project catalogue lives at `/projects/` in
+the same repository, but publishing a note does not require editing it.
 
 ## The Voice
 
@@ -119,11 +119,12 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    `install` and `workflow` when useful. Use an existing ID when revisiting a
    tool. Keep descriptions brief and verify repository links.
 
-   The normal CI/Jekyll build promotes the newest published tool post to the
-   homepage, derives its note link, retains earlier projects, and numbers the
-   list automatically. Do not also edit `_data/projects.yml` to promote a tool.
-   Ordinary notes omit `project:` and leave the lead project alone. Drafts stay
-   in `_drafts/` until the user approves publication.
+   The normal CI/Jekyll build lists every published post on the homepage and
+   promotes the newest tool post to the lead entry on `/projects/`. It derives
+   the note link, retains earlier projects, and numbers the list automatically.
+   Do not also edit `_data/projects.yml` to promote a tool. Ordinary notes omit
+   `project:` and leave the lead project alone. Drafts stay in `_drafts/` until
+   the user approves publication.
 
 5. **Handle images** - If they paste screenshots:
    - Save to `assets/images/YYYY-MM-DD-descriptive-name.png`
@@ -157,7 +158,7 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    ```
    If the new run has not appeared yet, check the list again before invoking
    `gh run watch`. Only after the run succeeds and the URL returns successfully
-   should you tell the user that the post is live at `https://bjola.org/notes/`.
+   should you tell the user that the post is live at `https://bjola.org/`.
 
 ## Social / Search Metadata (automatic)
 
@@ -205,7 +206,8 @@ When in doubt, read it out loud. If it sounds like a press release or a LinkedIn
 
 ## Site Info
 
-- **URL**: `https://bjola.org/notes/`
+- **URL**: `https://bjola.org/` (`/notes/` remains an alias)
+- **Projects**: `https://bjola.org/projects/`
 - **Theme**: Annotated workbench for the project ledger; quiet editorial reading for Notes
 - **Build**: Jekyll via GitHub Actions
 - **Friction level**: Zero. That's the whole point.

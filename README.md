@@ -1,7 +1,10 @@
 # Bjola.org
 
-The Bjola open-source project ledger and Notes site. Built with Jekyll and
+Bjola's Notes site and open-source project catalogue. Built with Jekyll and
 deployed to GitHub Pages.
+
+The homepage lists all notes, newest first. `/notes/` keeps the same view for
+existing links; `/projects/` holds the project catalogue.
 
 ## Run locally
 
@@ -26,15 +29,15 @@ commit and push to `main`. See `CLAUDE.md` for the writing and publishing
 contract.
 
 Tool posts include a `project:` mapping in their frontmatter. Jekyll features
-the newest published tool post on the homepage, links to its generated URL,
+the newest published tool post on `/projects/`, links to its generated URL,
 and keeps earlier tools in the project list. It uses the newest post for each
 project ID and avoids duplicates with `_data/projects.yml`. Ordinary notes and
 drafts do not change the lead project.
 
 Use `_posts/2026-09-08-the-show-must-go-on.md` as the metadata example. No
 separate homepage or catalogue edit is needed. The normal Pages CI build
-renders the update and tests promotion, ordering, duplicate handling, and
-draft exclusion first. Run those checks locally with:
+updates both pages and tests the Notes homepage, project promotion, ordering,
+duplicate handling, and draft exclusion first. Run those checks locally with:
 
 ```sh
 bundle exec ruby scripts/test-homepage.rb

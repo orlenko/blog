@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Generate one 1200x630 Open Graph card per post, plus the site home card.
+# Generate one 1200x630 Open Graph card per post, plus Notes and Projects cards.
 # The composition uses only repository assets and system fonts, so CI does not
 # depend on the old untracked background-photo collection.
 
@@ -66,9 +66,13 @@ make_card() { # $1=output $2=section label $3=title
     "$out"
 }
 
-make_card "$OUT_DIR/home.png" "PROJECT LEDGER" \
-  "Tools I needed, then made public."
+make_card "$OUT_DIR/home.png" "NOTES" \
+  "Notes from building and using software."
 echo "  wrote assets/og/home.png"
+
+make_card "$OUT_DIR/projects.png" "PROJECT LEDGER" \
+  "Tools I needed, then made public."
+echo "  wrote assets/og/projects.png"
 
 shopt -s nullglob
 count=0
@@ -82,4 +86,4 @@ for f in "$POSTS_DIR"/*.md; do
   count=$((count + 1))
 done
 
-echo "Generated $count post card(s) + home card into assets/og/"
+echo "Generated $count post card(s) + Notes and Projects cards into assets/og/"
