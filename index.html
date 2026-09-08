@@ -44,13 +44,12 @@ body_class: home
           {% if lead.note %}<a class="button button--ghost-light" href="{{ lead.note | relative_url }}">Build note</a>{% endif %}
         </div>
       </div>
-      <div class="lead-project__diagram" role="group" aria-label="Undrudge workflow">
-        <p class="kicker">Local pipeline / no daemon</p>
+      <div class="lead-project__diagram" role="group" aria-label="{{ lead.name | escape }} workflow">
+        <p class="kicker">{{ lead.workflow.label }}</p>
         <ol>
-          <li><span>01</span>Gather agent + shell history</li>
-          <li><span>02</span>Sanitize before storage</li>
-          <li><span>03</span>Analyze repeated work</li>
-          <li><span>04</span>Write Markdown recommendations</li>
+          {% for step in lead.workflow.steps %}
+            <li><span>{{ forloop.index | prepend: '0' }}</span>{{ step }}</li>
+          {% endfor %}
         </ol>
         <code>{{ lead.install }}</code>
       </div>
