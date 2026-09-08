@@ -28,17 +28,17 @@ featured:
         - "Analyze repeated work"
         - "Write Markdown recommendations"
 
-  - id: agents
-    name: Agent Observer + Agent Pair
+  - id: agent-pair
+    name: Agent Pair
     status: installable
-    status_label: Installable plugins
-    language: Python + TypeScript
-    short: "See which coding-agent sessions need attention, or connect two directly."
+    status_label: Installable plugin
+    language: Python
+    short: "Connect two coding-agent sessions directly."
     description: >-
-      Two local-first plugins for supervising busy agent work. Observer gathers
-      attention signals into one private dashboard; Pair provides a durable,
-      TLS-pinned mailbox between exactly two sessions.
-    repository: "https://github.com/orlenko/skills"
+      A durable, TLS-pinned mailbox for two Claude Code or Codex sessions, on
+      one machine or across machines. Exchange tasks, reviews, and handoffs
+      without a central hub.
+    repository: "https://github.com/orlenko/skills#agent-pair"
 
   - id: aitts
     name: aisay / aitts
