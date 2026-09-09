@@ -3,6 +3,7 @@ title: "When the Work Needs More Than a Pair"
 date: 2026-09-08 16:32:00 -0400
 description: "Agent Pair connects two sessions. Agent Orchestra coordinates a larger crew across machines."
 image: /assets/og/2026-09-08-agent-orchestra.png
+thumbnail: /assets/images/2026-09-08-agent-orchestra-trio.png
 project:
   id: agent-orchestra
   name: Agent Orchestra
@@ -23,6 +24,8 @@ project:
       - "Invite players + their children"
       - "Assign work + collect results"
 ---
+
+![A violinist, pianist, and cellist performing together in a warmly sunlit room.]({{ '/assets/images/2026-09-08-agent-orchestra-trio.png' | relative_url }})
 
 [Agent Pair](https://github.com/orlenko/skills#agent-pair) is one of my daily tools. It connects two coding-agent sessions through a durable mailbox. Give one session the other's invite, and they can talk directly, on the same machine or across machines.
 
