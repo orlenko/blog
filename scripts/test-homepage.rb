@@ -2,6 +2,8 @@ require "fileutils"
 require "minitest/autorun"
 require "tmpdir"
 require "yaml"
+require "json"
+require "date"
 require "jekyll"
 
 class HomepageTest < Minitest::Test
@@ -108,5 +110,36 @@ class HomepageTest < Minitest::Test
       refute_includes page, 'class="lead-project"'
     end
     assert_equal @homepage, @notes
+  end
+
+  def test_note_lists_use_generated_thumbnails_and_never_full_size_sources
+    original = "/assets/images/example.jpg"
+    preview = "/assets/thumbs/images/example.jpg.webp"
+    File.write(File.join(@source, "_data/thumbnails.json"), JSON.generate({
+      "images" => { original => { "src" => preview, "width" => 400, "height" => 300 } }
+    }))
+    post("newer", "2024-03-05 09:00:00 +0000", { "thumbnail" => original })
+    post("older", "2024-03-04 09:00:00 +0000", { "thumbnail" => original })
+    post("no-image", "2024-03-03 09:00:00 +0000")
+    render
+    [@homepage, @notes].each do |page|
+      assert_equal [preview, preview], page.scan(/<img src="([^"]+)"/).flatten
+      refute_includes page, "src=\"#{original}\""
+      assert_includes page, 'width="400" height="300"'
+      assert_includes page, 'loading="eager"'
+      assert_includes page, 'loading="lazy"'
+      assert_includes page, "NOTE<br>3"
+    end
+  end
+
+  def test_every_published_thumbnail_has_a_generated_file
+    images = JSON.parse(File.read(File.join(ROOT, "_data/thumbnails.json"))).fetch("images")
+    Dir[File.join(ROOT, "_posts/*.md")].each do |path|
+      metadata = YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Time, Date])
+      next unless metadata["thumbnail"]
+      entry = images[metadata["thumbnail"]]
+      refute_nil entry, "Missing generated thumbnail for #{path}"
+      assert File.file?(File.join(ROOT, entry.fetch("src").delete_prefix("/"))), entry.fetch("src")
+    end
   end
 end

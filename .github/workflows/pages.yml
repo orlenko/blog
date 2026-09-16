@@ -27,6 +27,11 @@ jobs:
       - name: Generate Open Graph share cards
         run: bash scripts/gen-og-cards.sh
 
+      - name: Verify committed thumbnails and hook behavior
+        run: |
+          python3 scripts/gen-thumbnails.py --check
+          python3 -m unittest discover -s scripts -p 'test_thumbnails.py'
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

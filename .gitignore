@@ -9,8 +9,11 @@ Gemfile.lock
 .DS_Store
 
 # Source backgrounds (JPGs copied to assets/backgrounds)
-backgrounds/
+/backgrounds/
 backgrounds.zip
 
 # Generated Open Graph share cards (built in CI by scripts/gen-og-cards.sh)
 assets/og/
+
+# Python thumbnail tooling
+__pycache__/

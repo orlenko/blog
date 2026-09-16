@@ -131,6 +131,11 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    - Add `thumbnail: /assets/images/YYYY-MM-DD-descriptive-name.png` to the
      post frontmatter so the image appears in the Notes index
    - Reference as `![description]({{ '/assets/images/filename.png' | relative_url }})`
+   - Enable the thumbnail hook once with `sh scripts/install-hooks.sh`. Keep
+     `thumbnail:` pointing to the original; the Notes template resolves its
+     generated WebP automatically. The hook stages `assets/thumbs/` and
+     `_data/thumbnails.json` from staged originals. Include those generated
+     changes in the image's commit. CI rejects missing or stale previews.
 
 6. **Commit and push only the new post and its images**. Inspect the paths
    first; never scoop up unrelated workshop edits with `git add -A`:
@@ -144,7 +149,8 @@ When the user wants to publish (says "publish this", "make this a post", "blog t
    git push origin main
    ```
    Omit the image path from each command when the post has no image. If any
-   other path is staged, stop and ask before committing.
+   unrelated path is staged, stop and ask before committing. The generated
+   thumbnails and their manifest are expected parts of an image commit.
 
 7. **Verify the deployment**. Find the Pages run for the commit, wait for it,
    then check the final post URL:

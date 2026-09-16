@@ -1,7 +1,8 @@
 <article class="note-row">
   <a class="note-row__visual" href="{{ include.post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-    {% if include.post.thumbnail %}
-      <img src="{{ include.post.thumbnail | relative_url }}" alt="" loading="lazy">
+    {% assign thumb = site.data.thumbnails.images[include.post.thumbnail] %}
+    {% if thumb %}
+      <img src="{{ thumb.src | relative_url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="" decoding="async"{% if include.number == 1 %} loading="eager"{% else %} loading="lazy"{% endif %}>
     {% else %}
       <span>NOTE<br>{{ include.number }}</span>
     {% endif %}
