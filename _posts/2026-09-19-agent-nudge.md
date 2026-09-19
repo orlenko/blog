@@ -69,6 +69,22 @@ That second case comes from [Agent Orchestra](https://bjola.org/2026/09/08/agent
 
 Building this turned up two bugs in Orchestra's own wake-up, both fixed the same day. Claude Code runs a different hook, `StopFailure`, when a turn ends in an API error, and Orchestra wasn't listening for it. And leaving FYI mail unread used to switch off the wake-up waiter entirely. Every health check missed both. It took something outside the system, reading the actual screen, to catch either one.
 
+## The first night
+
+After that it ran live overnight on both machines for about 14 hours, watching eight Claude Code panes. It sent 32 nudges. Of those, 26 were about mail that had arrived while a player sat idle, 5 were the generic "is your goal done" question, and 1 was the pointed kind.
+
+It also decided not to type 41 times. In 25 of those the classifier thought the agent was working or blocked, 12 were players with nothing assigned, and 3 were agents that had asked their human a question. Once, a person was typing in that session.
+
+Whether a nudge turned into real work is harder to count. The built-in measure only checks whether the screen kept changing for two minutes afterwards, and it says 11 of the 30 it could measure, which is an undercount. The transcripts say more. On the Ubuntu machine, 17 mail nudges were checked, and every one of them led to a turn with real tool use, between 2 and 33 tool calls each: pushing fixes, clearing PRs, correcting a plan. On the Mac, each of the conductor's 7 mail nudges produced a status update for me.
+
+The six generic and pointed nudges all went to sessions that really were waiting on something outside themselves. Each of those sessions said what it was waiting for and set up a watcher. No work restarted, but that was the answer I wanted.
+
+Around midnight the conductor wrote to tell me that one player "looks asleep" and would need a nudge from me. I was asleep too. Forty-five minutes later the nudger woke that player with an unread-mail nudge, and by morning the player had caught up on everything it owed.
+
+Another player, woken the same way, found that a message relayed to it had misdescribed two review findings. It went to the actual review, fixed the real defects, and pushed.
+
+The players' own wake-up bug is fixed in agent-orchestra 0.2.7, but their sessions hadn't been restarted onto the fix, so overnight the nudger did all of their waking. As far as I know it never typed over a person. A few nudges were arguably unnecessary: the generic ones went to sessions that were already waiting properly and only needed to say so, and some mail nudges reached the conductor only minutes before its own watcher would have.
+
 ## Trying it
 
 ```sh
@@ -92,4 +108,4 @@ The [README](https://github.com/orlenko/skills#agent-nudge) has the current comm
 - With the key set, the last 40 or so lines of an idle pane's screen go to TypeSafe, a third-party API, once per stop. Live mode requires the classifier; dry-run works without it.
 - It only sees sessions running inside tmux.
 - The Codex screen parsing hasn't been checked against a real Codex pane yet. Claude's has.
-- It's a day old. I don't have numbers yet on how often a nudge turns into real work. The log records that, so ask me again in a month.
+- One night on eight Claude panes is a small sample. The log is still counting, so ask me again in a month.
