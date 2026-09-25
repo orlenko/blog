@@ -336,6 +336,34 @@
       "src": "/assets/thumbs/images/2026-09-19-agent-nudge.jpg.webp",
       "width": 400
     },
+    "/assets/images/2026-09-24-holos-context.jpg": {
+      "height": 243,
+      "sha256": "bbfc6221506f43ecabeaea0796c08ed5b8951ac84279c8247d1c3bf6075be77e",
+      "source_sha256": "de98fbf33b797d7d73562d815baa22c670ddc6215670b76a0558f6fb4f0a0077",
+      "src": "/assets/thumbs/images/2026-09-24-holos-context.jpg.webp",
+      "width": 400
+    },
+    "/assets/images/2026-09-24-holos-fix.jpg": {
+      "height": 400,
+      "sha256": "09f317e9703bbcf6ca725588ad7cb2edb2baf5581d5590dca21acabf60ae3074",
+      "source_sha256": "77b3419d04dfbe8ba095b34d59aac4a8bf2c336aa3eb638583a70d17cd8f9c27",
+      "src": "/assets/thumbs/images/2026-09-24-holos-fix.jpg.webp",
+      "width": 361
+    },
+    "/assets/images/2026-09-24-holos-setup.jpg": {
+      "height": 384,
+      "sha256": "ad3711ee9eb7e70dea3301674a4daaf7f861013d6d6b6de07439bc8a77d6c8eb",
+      "source_sha256": "fc290154ade6af43f01a982f42010861664d12ec8e5feceff23f02296d9c24ee",
+      "src": "/assets/thumbs/images/2026-09-24-holos-setup.jpg.webp",
+      "width": 400
+    },
+    "/assets/images/2026-09-24-holos-top-bar.jpg": {
+      "height": 79,
+      "sha256": "b0541c903ae2dfe32327291ef1a37db98ace9601220c1492ecf507f25eac3170",
+      "source_sha256": "49a27f6083aa33732136e32a34d587d022dfb704858fad59d9fe51671fa8b6d3",
+      "src": "/assets/thumbs/images/2026-09-24-holos-top-bar.jpg.webp",
+      "width": 400
+    },
     "/assets/images/aisay.jpg": {
       "height": 400,
       "sha256": "03d8f3dfa38a112637d9ce79f2ef563abe724519ff81696ef3cf494673e73af2",
