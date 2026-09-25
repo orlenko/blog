@@ -27,7 +27,7 @@ project:
 
 I liked the convenience of the AI-based dictation tools. The speech recognition is high quality, and they work the way dictation should: press and hold a key, talk, and the text shows up wherever you're typing. But the privacy aspect bugged the hell out of me. My audio goes off to someone's server, and after that I have no idea who reads it, what gets kept, or whether some AI training pipeline gets to chew on my thoughts forever. Once it's gone, I've lost control of it.
 
-Now I've solved it for myself. Apple provides native speech recognition APIs on the Mac: free, unlimited, and fully local. Nothing leaves the machine and the audio stays private. So I built [Voice is Local](https://github.com/orlenko/holos) on top of them, and I'm cancelling my subscription to the cloud one. It's free and MIT-licensed.
+Now I've solved it for myself. Apple provides native speech recognition APIs on the Mac: free, unlimited, and fully local. Nothing leaves the machine and the audio stays private. So I built [Voice is Local](https://github.com/orlenko/holos) on top of them, and I'm cancelling my subscription to the cloud one. It's free and open source, and it has its own page at [voiceislocal.com](https://voiceislocal.com).
 
 I first called it Holos, which is Ukrainian for "voice", because I think in Ukrainian. Apple's new on-device model doesn't do Ukrainian, though, and there are literally dozens of paid dictation products out there, all trying to make money. This one is free, open source, and keeps your voice on your own Mac, so the app's name now says exactly that. The repository is still called holos, which reminds me to add Ukrainian once Apple supports it.
 
