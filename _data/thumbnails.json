@@ -364,6 +364,13 @@
       "src": "/assets/thumbs/images/2026-09-24-holos-top-bar.jpg.webp",
       "width": 400
     },
+    "/assets/images/2026-10-23-voice-is-local-icon.png": {
+      "height": 400,
+      "sha256": "9619a7871d2c668a27b5f82f533993af26b8cf3b9231d4a881b0949e87bd6fb9",
+      "source_sha256": "dcc6131ec95a87eb94cee60ee034b3c775df15910f01943e81b1843094434045",
+      "src": "/assets/thumbs/images/2026-10-23-voice-is-local-icon.png.webp",
+      "width": 400
+    },
     "/assets/images/aisay.jpg": {
       "height": 400,
       "sha256": "03d8f3dfa38a112637d9ce79f2ef563abe724519ff81696ef3cf494673e73af2",
